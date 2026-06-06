@@ -17,33 +17,29 @@ export function GameScreen({
   onReset,
 }: GameScreenProps) {
   return (
-    <div className="flex flex-col min-h-full bg-gray-50">
-      {/* Header */}
-      <header className="flex items-center justify-between p-3 bg-white border-b border-gray-200">
+    <div className="flex min-h-full flex-col bg-bg-primary">
+      <header className="grid grid-cols-[auto_1fr_auto] items-center gap-3 border-b-4 border-text-primary bg-bg-secondary px-3 py-3 sm:px-5">
         <button
           onClick={onReset}
-          className="text-gray-500 text-sm px-3 py-1.5 rounded active:bg-gray-100"
+          className="border-2 border-text-primary bg-bg-primary px-3 py-2 text-sm uppercase tracking-wide text-text-primary active:translate-y-[1px] hover:bg-bg-tertiary"
         >
-          ← Back
+          Back
         </button>
-        <h1 className="font-bold text-gray-900">Bingo Mixer</h1>
-        <div className="w-16"></div>
+        <h1 className="text-center text-lg font-display text-text-primary sm:text-2xl">Bingo Mixer</h1>
+        <div className="h-1 w-12 bg-text-primary sm:w-16" aria-hidden="true"></div>
       </header>
 
-      {/* Instructions */}
-      <p className="text-center text-gray-500 text-sm py-2 px-4">
+      <p className="border-b-2 border-text-primary bg-bg-primary px-4 py-3 text-center text-sm leading-6 text-text-secondary sm:text-base">
         Tap a square when you find someone who matches it.
       </p>
 
-      {/* Bingo indicator */}
       {hasBingo && (
-        <div className="bg-amber-100 text-amber-800 text-center py-2 font-semibold text-sm">
-          🎉 BINGO! You got a line!
+        <div className="border-b-4 border-text-primary bg-bingo px-4 py-3 text-center font-display text-sm uppercase tracking-wider text-bg-primary sm:text-base">
+          Bingo! You got a line.
         </div>
       )}
 
-      {/* Board */}
-      <div className="flex-1 flex items-center justify-center p-3">
+      <div className="flex flex-1 items-center justify-center p-3 sm:p-5">
         <BingoBoard
           board={board}
           winningSquareIds={winningSquareIds}

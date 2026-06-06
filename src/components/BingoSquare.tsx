@@ -8,27 +8,38 @@ interface BingoSquareProps {
 
 export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
   const baseClasses =
-    'relative flex items-center justify-center p-1 text-center border border-gray-300 rounded transition-all duration-150 select-none min-h-[60px] text-xs leading-tight';
+    'relative flex min-h-[72px] w-full items-center justify-center border-2 border-text-primary p-2 text-center text-[11px] leading-4 tracking-wide select-none sm:min-h-[88px] sm:p-3 sm:text-xs sm:leading-5';
 
-  const stateClasses = square.isMarked
-    ? isWinning
-      ? 'bg-amber-200 border-amber-400 text-amber-900'
-      : 'bg-marked border-marked-border text-green-800'
-    : 'bg-white text-gray-700 active:bg-gray-100';
+  const unmarkedClasses =
+    'bg-bg-primary text-text-primary hover:bg-bg-tertiary active:translate-y-[1px]';
+  const markedClasses =
+    'bg-marked text-bg-primary';
+  const winningClasses =
+    'bg-bingo text-bg-primary';
+  const freeSpaceClasses =
+    'bg-accent text-text-primary font-bold uppercase';
 
-  const freeSpaceClasses = square.isFreeSpace ? 'font-bold text-sm' : '';
+  const stateClasses = square.isFreeSpace
+    ? freeSpaceClasses
+    : square.isMarked
+      ? isWinning
+        ? winningClasses
+        : markedClasses
+      : unmarkedClasses;
 
   return (
     <button
       onClick={onClick}
       disabled={square.isFreeSpace}
-      className={`${baseClasses} ${stateClasses} ${freeSpaceClasses}`}
+      className={`${baseClasses} ${stateClasses}`}
       aria-pressed={square.isMarked}
       aria-label={square.isFreeSpace ? 'Free space' : square.text}
     >
-      <span className="wrap-break-word hyphens-auto">{square.text}</span>
+      <span className="break-words hyphens-auto">{square.text}</span>
       {square.isMarked && !square.isFreeSpace && (
-        <span className="absolute top-0.5 right-0.5 text-green-600 text-xs">✓</span>
+        <span className="absolute right-1 top-1 text-[10px] font-bold sm:text-xs" aria-hidden="true">
+          ✓
+        </span>
       )}
     </button>
   );

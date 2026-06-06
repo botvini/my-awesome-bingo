@@ -16,18 +16,24 @@ function App() {
   } = useBingoGame();
 
   if (gameState === 'start') {
-    return <StartScreen onStart={startGame} />;
+    return (
+      <div className="animate-[fade-in_0.2s_ease-out]">
+        <StartScreen onStart={startGame} />
+      </div>
+    );
   }
 
   return (
     <>
-      <GameScreen
-        board={board}
-        winningSquareIds={winningSquareIds}
-        hasBingo={gameState === 'bingo'}
-        onSquareClick={handleSquareClick}
-        onReset={resetGame}
-      />
+      <div className="animate-[fade-in_0.2s_ease-out]">
+        <GameScreen
+          board={board}
+          winningSquareIds={winningSquareIds}
+          hasBingo={gameState === 'bingo'}
+          onSquareClick={handleSquareClick}
+          onReset={resetGame}
+        />
+      </div>
       {showBingoModal && (
         <BingoModal onDismiss={dismissModal} />
       )}

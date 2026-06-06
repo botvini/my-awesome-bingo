@@ -4,23 +4,27 @@ interface StartScreenProps {
 
 export function StartScreen({ onStart }: StartScreenProps) {
   return (
-    <div className="flex flex-col items-center justify-center min-h-full p-6 bg-gray-50">
-      <div className="text-center max-w-sm">
-        <h1 className="text-4xl font-bold text-gray-900 mb-2">Bingo Mixer</h1>
-        <p className="text-lg text-gray-600 mb-8">Find your people!</p>
-        
-        <div className="bg-white rounded-lg p-6 shadow-sm border border-gray-200 mb-8">
-          <h2 className="font-semibold text-gray-800 mb-3">How to play</h2>
-          <ul className="text-left text-gray-600 text-sm space-y-2">
-            <li>• Find people who match the questions</li>
-            <li>• Tap a square when you find a match</li>
-            <li>• Get 5 in a row to win!</li>
+    <div className="flex min-h-full items-center justify-center bg-bg-primary p-4 sm:p-8">
+      <div className="w-full max-w-2xl border-4 border-text-primary bg-bg-secondary p-5 sm:p-8 animate-[fade-in_0.25s_ease-out]">
+        <div className="mb-8 border-b-4 border-text-primary pb-5 sm:pb-7">
+          <h1 className="font-display text-text-primary">Bingo Mixer</h1>
+          <p className="mt-3 text-base tracking-wide text-text-secondary sm:text-lg">
+            Find your people. Fill the board. Claim the row.
+          </p>
+        </div>
+
+        <div className="mb-8 border-4 border-text-primary bg-bg-primary p-4 sm:p-5">
+          <h2 className="mb-3 text-xl font-display text-text-primary">How to play</h2>
+          <ul className="space-y-2 text-left text-sm leading-6 text-text-secondary sm:text-base">
+            <li>Find people who match each square prompt.</li>
+            <li>Tap the square when you find a match.</li>
+            <li>Complete five in a row to win.</li>
           </ul>
         </div>
 
         <button
           onClick={onStart}
-          className="w-full bg-accent text-white font-semibold py-4 px-8 rounded-lg text-lg active:bg-accent-light transition-colors"
+          className="w-full border-4 border-text-primary bg-accent px-6 py-4 font-display text-xl text-text-primary uppercase tracking-wide active:translate-y-[1px] hover:bg-accent-light"
         >
           Start Game
         </button>
